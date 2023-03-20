@@ -27,13 +27,15 @@ const MusicContent = () => {
     return (
         <div>
             <h1 className='text-center'>Music</h1>
-                <div className='d-flex justify-content-center'>
-                    {productsArr.map((item) => {
-                        return <MusicItem title={item.title} price={item.price} imageUrl={item.imageUrl} />
-                    })}
+            <div className='container'>
+            <div className='row my-2'>
+                {productsArr.map((item) => {
+                    return <div className='col-md-3 my-3'><MusicItem title={item.title} price={item.price} imageUrl={item.imageUrl} /></div>
+                })}
+            </div>
             </div>
             <div className='text-center'>
-                <button type="button" class="btn btn-secondary my-3">See the Cart</button>
+                <button type="button" class="btn btn-secondary my-3 text-info btn-lg">See the Cart</button>
             </div>
         </div>
     )

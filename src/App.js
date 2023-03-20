@@ -1,14 +1,24 @@
-import { Fragment } from 'react';
-import Footer from './Components/Products/Footer';
-import Header from './Components/Products/Header';
-import MusicContent from './Components/Products/MusicContent';
-import Navbar from './Components/Products/NavBar';
+import { Fragment, useState } from 'react';
+import Cart from './Components/Cart/Cart';
+import Footer from './Components/layout/Footer';
+import Header from './Components/layout/Header';
+import MusicContent from './Components/layout/MusicContent';
+import Navbar from './Components/layout/NavBar';
 
 
 function App() {
+  const [showCart,setShowCart]=useState(false);
+  const handleToggleCart=()=>{
+    if(showCart){
+      setShowCart(false);
+    }else{
+      setShowCart(true);
+    }
+  }
   return (
     <Fragment>
-      <Navbar/>
+      {showCart && <Cart handleToggleCart={handleToggleCart}/>}
+      <Navbar handleToggleCart={handleToggleCart}/>
       <Header/>
       <MusicContent/>
       <Footer/>

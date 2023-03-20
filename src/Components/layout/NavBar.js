@@ -1,6 +1,9 @@
 import React from 'react'
 
-const Navbar = () => {
+const Navbar = (props) => {
+    const handleOpenCart=()=>{
+        props.handleToggleCart();
+    }
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -19,10 +22,9 @@ const Navbar = () => {
                             <li className="nav-item">
                                 <a className="nav-link active" aria-current="page" href="/">About</a>
                             </li>
-
                         </ul>
                         <form className="d-flex">
-                        <button type="button" className="btn btn-dark border-primary">Cart</button>
+                        <button type="button" className="btn btn-dark border-primary" onClick={handleOpenCart}>Cart</button>
                         </form>
                     </div>
                 </div>
