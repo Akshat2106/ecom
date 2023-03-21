@@ -5,6 +5,8 @@ import Header from './Components/Layout/Header';
 import MusicContent from './Components/Layout/MusicContent';
 import Navbar from './Components/Layout/NavBar';
 import CartProvider from './Store/CartProvider';
+import HeaderContent from './Components/Layout/Headercontent';
+import Home from './Components/Pages/Home';
 import {
   createBrowserRouter,
   RouterProvider
@@ -13,17 +15,26 @@ import {
 import About from './Components/Pages/About';
 
 function App() {
-  const [showCart,setShowCart]=useState(false);
-  const handleToggleCart=()=>{
-    if(showCart){
+  const [showCart, setShowCart] = useState(false);
+  const handleToggleCart = () => {
+    if (showCart) {
       setShowCart(false);
-    }else{
+    } else {
       setShowCart(true);
     }
   }
   const router = createBrowserRouter([
     {
-      path: "/",
+      path: "/home",
+      element: (<>
+        <Navbar handleToggleCart={handleToggleCart} />
+        <HeaderContent />
+        <Home />
+        <Footer />
+      </>),
+    },
+    {
+      path: "/store",
       element: (<>
         <Navbar handleToggleCart={handleToggleCart} />
         <Header/>
@@ -33,7 +44,12 @@ function App() {
     },
     {
       path: "/about",
-      element: <><Navbar handleToggleCart={handleToggleCart} /> <Header/><About/><Footer /></>,
+      element: <>
+        <Navbar handleToggleCart={handleToggleCart} />
+        <Header />
+        <About />
+        <Footer />
+      </>,
     },
   ]);
   return (
