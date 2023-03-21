@@ -23,19 +23,22 @@ const productsArr = [
         imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%204.png',
     }
 ]
-const MusicContent = () => {
+const MusicContent = (props) => {
+    const handleCartSeen=()=>{
+        props.handleToggleCart();
+    }
     return (
         <div>
-            <h1 className='text-center'>Music</h1>
+            <h1 className='text-center'>MUSIC</h1>
             <div className='container'>
             <div className='row my-2'>
                 {productsArr.map((item) => {
-                    return <div className='col-md-3 my-3'><MusicItem title={item.title} price={item.price} imageUrl={item.imageUrl} /></div>
+                    return <div className='col-md-3 my-3'><MusicItem key={item.title} title={item.title} price={item.price} imageUrl={item.imageUrl} product={item}/></div>
                 })}
             </div>
             </div>
             <div className='text-center'>
-                <button type="button" class="btn btn-secondary my-3 text-info btn-lg">See the Cart</button>
+                <button type="button" className="btn btn-secondary my-3 text-info btn-lg" onClick={handleCartSeen}>See the Cart</button>
             </div>
         </div>
     )

@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { cartContext } from '../../Store/CartProvider'
 
 const Navbar = (props) => {
-    const handleOpenCart=()=>{
+    let cartCtx=useContext(cartContext)
+    const handleOpenCart = () => {
         props.handleToggleCart();
     }
     return (
@@ -24,7 +26,8 @@ const Navbar = (props) => {
                             </li>
                         </ul>
                         <form className="d-flex">
-                        <button type="button" className="btn btn-dark border-primary" onClick={handleOpenCart}>Cart</button>
+                            <button type="button" className="btn btn-dark border-primary" onClick={handleOpenCart}>Cart</button>
+                            <span style={{color:"cyan",fontSize:"20px",margin:"-15px 0px"}}>{cartCtx.cartItems.totalItems}</span>
                         </form>
                     </div>
                 </div>
