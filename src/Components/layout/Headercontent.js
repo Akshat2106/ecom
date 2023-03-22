@@ -1,6 +1,6 @@
 import React from 'react'
 import './Headercontent.css'
-const HeaderContent = () => {
+const Headercontent = () => {
   return (
     <>
     <div className='heading-content'>
@@ -12,4 +12,4 @@ const HeaderContent = () => {
   )
 }
 
-export default HeaderContent
+export default Headercontent

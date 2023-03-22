@@ -1,16 +1,17 @@
 import { useState } from 'react';
 import Cart from './Components/Cart/Cart';
 import Footer from './Components/Layout/Footer';
-import Header from './Components/Layout/Header';
+import Heading from './Components/Layout/Heading';
 import MusicContent from './Components/Layout/MusicContent';
-import Navbar from './Components/Layout/NavBar';
+import Navbar from './Components/Layout/Navbar';
 import CartProvider from './Store/CartProvider';
 import About from './Components/Pages/About';
 import Home from './Components/Pages/Home';
-import HeaderContent from './Components/Layout/Headercontent';
+import Headercontent from './Components/Layout/Headercontent';
 import Contact from './Components/Pages/Contact';
 import { BrowserRouter, Route } from 'react-router-dom';
-
+import Product from './Components/Pages/Product';
+import ProductDetail from './Components/Pages/ProductDetail';
 
 
 function App() {
@@ -28,24 +29,29 @@ function App() {
       {showCart && <Cart handleToggleCart={handleToggleCart} />}
       <Navbar handleToggleCart={handleToggleCart} />
       <Route exact path='/'>
-        <HeaderContent />
+        <Headercontent />
         <Home />
       </Route>
       <Route exact path='/about'>
-        <Header />
+        <Heading />
         <About />
       </Route>
       <Route exact path='/store'>
-        <Header />
+        <Heading />
         <MusicContent handleToggleCart={handleToggleCart} />
       </Route>
       <Route exact path='/contact'>
         <Contact />
+      </Route>
+      <Route exact path='/products'>
+        <Product />
+      </Route>
+      <Route exact path='/products/:productId'>
+        <ProductDetail/>
       </Route>
       <Footer />
     </CartProvider>
     </BrowserRouter>
   );
 }
-
 export default App;
