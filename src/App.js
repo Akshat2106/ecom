@@ -5,14 +5,13 @@ import Header from './Components/Layout/Header';
 import MusicContent from './Components/Layout/MusicContent';
 import Navbar from './Components/Layout/NavBar';
 import CartProvider from './Store/CartProvider';
-import HeaderContent from './Components/Layout/Headercontent';
-import Home from './Components/Pages/Home';
-import {
-  createBrowserRouter,
-  RouterProvider
-} from "react-router-dom";
- 
 import About from './Components/Pages/About';
+import Home from './Components/Pages/Home';
+import HeaderContent from './Components/Layout/Headercontent';
+import Contact from './Components/Pages/Contact';
+import { BrowserRouter, Route } from 'react-router-dom';
+
+
 
 function App() {
   const [showCart, setShowCart] = useState(false);
@@ -23,40 +22,29 @@ function App() {
       setShowCart(true);
     }
   }
-  const router = createBrowserRouter([
-    {
-      path: "/home",
-      element: (<>
-        <Navbar handleToggleCart={handleToggleCart} />
-        <HeaderContent />
-        <Home />
-        <Footer />
-      </>),
-    },
-    {
-      path: "/store",
-      element: (<>
-        <Navbar handleToggleCart={handleToggleCart} />
-        <Header/>
-        <MusicContent handleToggleCart={handleToggleCart} />
-        <Footer />
-      </>),
-    },
-    {
-      path: "/about",
-      element: <>
-        <Navbar handleToggleCart={handleToggleCart} />
-        <Header />
-        <About />
-        <Footer />
-      </>,
-    },
-  ]);
   return (
+    <BrowserRouter>
     <CartProvider>
       {showCart && <Cart handleToggleCart={handleToggleCart} />}
-      <RouterProvider router={router} />
+      <Navbar handleToggleCart={handleToggleCart} />
+      <Route exact path='/'>
+        <HeaderContent />
+        <Home />
+      </Route>
+      <Route exact path='/about'>
+        <Header />
+        <About />
+      </Route>
+      <Route exact path='/store'>
+        <Header />
+        <MusicContent handleToggleCart={handleToggleCart} />
+      </Route>
+      <Route exact path='/contact'>
+        <Contact />
+      </Route>
+      <Footer />
     </CartProvider>
+    </BrowserRouter>
   );
 }
 
