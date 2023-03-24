@@ -1,7 +1,7 @@
 import React, { useContext, useRef } from 'react'
 import classes from './Login.module.css'
 import { useHistory } from 'react-router-dom'
-import { cartContext } from '../../Store/CartProvider';
+import { cartContext } from '../../Store/CartProvider'
 
 const Login = () => {
     let enteredpass = useRef();
@@ -30,10 +30,10 @@ const Login = () => {
                     let responce = res.json();
                     responce.then((data) => {
                         console.log(ctx);
+                        ctx.setIsLoggedIn(true);
                         console.log("idTOken:", data.idToken);
                         ctx.setToken(data.idToken);
                         localStorage.setItem("idToken", data.idToken);
-                        ctx.setIsLoggedIn(true);
                         history.push('/products')
                     })
                 } else {
