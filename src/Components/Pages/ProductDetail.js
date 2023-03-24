@@ -65,6 +65,8 @@ const ProductDetail = (props) => {
                    </div>
                    </div>
                    </>
+                }else{
+                    return null;
                 }
                })}           
         </div>

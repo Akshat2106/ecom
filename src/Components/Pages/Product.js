@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const products = [
     {
@@ -52,7 +52,7 @@ const Product = () => {
                     <div className='text-center'>
                         <h2>{prod.title}</h2>
                     </div>
-                        <Link to={`products/${prod.productId}`}>  <img src={prod.image1} className="my-3 mx-3" alt=".." style={{ height: "300px", width: "300px" }}></img></Link>
+                    <Link to={`products/${prod.productId}`}>  <img src={prod.image1} className="my-3 mx-3" alt=".." style={{ height: "300px", width: "300px" }}></img></Link>
                 </div>
             })}
         </>
@@ -60,18 +60,3 @@ const Product = () => {
 }
 
 export default Product
-
-{/* <div>
-                 <h2>Product Page</h2>
-                 <ul>
-                {PRODUCTS.map((product) => { return <Link to={`products/${product.id}`}><li>{product.title}</li></Link> })}
-                </ul>
-             </div> */}
-
-
-        // <div className='container d-flex justify-content-center'>
-        //     <div>
-        //         <h2>{products[0].title}</h2>
-        //         <Link to="products/detail">  <img src={products[0].image1} className="my-3 mx-3" alt=".." style={{ height: "300px", width: "300px" }}></img></Link>
-        //     </div>
-        //     <div />

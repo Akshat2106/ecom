@@ -2,31 +2,11 @@ import { useContext } from 'react';
 import { cartContext } from '../../Store/CartProvider';
 import Modal from '../UI/Modal';
 import './Cart.module.css'
-// const cartElements = [
-//     {
-//         title: 'Colors',
-//         price: 100,
-//         imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%201.png',
-//         quantity: 2,
-//     },
-//     {
-//         title: 'Black and white Colors',
-//         price: 50,
-//         imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%202.png',
-//         quantity: 3,
-//     },
-//     {
-//         title: 'Yellow and Black Colors',
-//         price: 70,
-//         imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%203.png',
-//         quantity: 1,
-//     }
-// ]
 const Cart = (props) => {
     const handleClose = () => {
         props.handleToggleCart();
     }
-    const cartCtx=useContext(cartContext);
+    const cartCtx = useContext(cartContext);
     return (
         <Modal>
             <div>
@@ -37,7 +17,7 @@ const Cart = (props) => {
                     ITEM
                 </h4>
                 <h4 className="col">
-                   PRICE
+                    PRICE
                 </h4>
                 <h4 className="col">
                     QUANTITY
@@ -60,17 +40,17 @@ const Cart = (props) => {
                             <button className="btn btn-danger">REMOVE</button>
                         </div>
                     </div>
-                    <hr/>
+                    <hr />
                 </div>
             })
             }
-              <div className="row align-items-start">
+            <div className="row align-items-start">
                 <h4 className="col">
                 </h4>
                 <h4 className="col">
                 </h4>
                 <h4 className="col">
-                <h3>Total ${cartCtx.cartItems.totalAmount}</h3>
+                    <h3>Total ${cartCtx.cartItems.totalAmount}</h3>
                 </h4>
             </div>
 

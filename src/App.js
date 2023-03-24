@@ -18,7 +18,7 @@ import Login from './Components/Pages/Login';
 
 function App() {
   const [showCart, setShowCart] = useState(false);
-  const cartCtx = useContext(cartContext);
+  let ctx=useContext(cartContext);
   const handleToggleCart = () => {
     if (showCart) {
       setShowCart(false);
@@ -27,38 +27,47 @@ function App() {
     }
   }
   return (
-    <BrowserRouter>
-      <CartProvider>
+      <BrowserRouter>
         {showCart && <Cart handleToggleCart={handleToggleCart} />}
         <Navbar handleToggleCart={handleToggleCart} />
-        <Route exact path='/'>
-          <Headercontent />
-          <Home />
-        </Route>
-        <Route exact path='/about'>
-          <Heading />
-          <About />
-        </Route>
-        <Route exact path='/store'>
-          <Heading />
-          <MusicContent handleToggleCart={handleToggleCart} />
-        </Route>
-        <Route exact path='/contact'>
-          <Contact />
-        </Route>
-        <Route exact path='/products'>
-          {cartCtx.isLoggedIn && <Product />}
-          {!cartCtx.isLoggedIn && <Redirect to='/login' />}
-        </Route>
-        <Route exact path='/login'>
-          <Login />
-        </Route>
-        <Route exact path='/products/:productId'>
-          <ProductDetail />
-        </Route>
-        <Footer />
-      </CartProvider>
-    </BrowserRouter>
+        <Switch>
+          <Route exact path='/'>
+            <Headercontent />
+            <Home />
+            <Footer />
+          </Route>
+
+          <Route exact path='/about'>
+            <Heading />
+            <About />
+            <Footer />
+          </Route>
+          <Route exact path='/store'>
+            <Heading />
+            <MusicContent handleToggleCart={handleToggleCart} />
+            <Footer />
+          </Route>
+          <Route exact path='/contact'>
+            <Contact />
+            <Footer />
+          </Route>
+          <Route exact path='/products'>
+            {ctx.isLoggedIn && <Product />}
+            {!ctx.isLoggedIn && <Redirect to='/login' />}
+            <Footer />
+          </Route>
+          <Route exact path='/login'>
+            <Login />
+            <Footer />
+          </Route>
+          <Route exact path='/products/:productId'>
+            <ProductDetail />
+            <Footer />
+          </Route>
+
+        </Switch>
+
+      </BrowserRouter>
   );
 }
 
