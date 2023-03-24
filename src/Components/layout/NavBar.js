@@ -17,13 +17,19 @@ const Navbar = (props) => {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <NavLink className={({isActive})=>isActive?"nav-link active":"nav-link"} aria-current="page" exact to="/">Home</NavLink>
+                                <NavLink className="nav-link active" aria-current="page" exact to="/">Home</NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink className={({isActive})=>isActive?"nav-link active":"nav-link"} aria-current="page" exact to="/about">About</NavLink>
+                                <NavLink className="nav-link active" aria-current="page" exact to="/store">Store</NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink className={({isActive})=>isActive?"nav-link active":"nav-link"} aria-current="page" exact to="/store">Store</NavLink>
+                                <NavLink className="nav-link active" aria-current="page" exact to="/about">About</NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink className="nav-link active" aria-current="page" exact to="/login">Login</NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink className="nav-link active" aria-current="page" exact to="/contact">Contact Us</NavLink>
                             </li>
                         </ul>
                         <form className="d-flex">
