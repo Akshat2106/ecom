@@ -3,9 +3,31 @@ import { NavLink } from 'react-router-dom';
 import { cartContext } from '../../Store/CartProvider';
 
 const Navbar = (props) => {
-    let cartCtx=useContext(cartContext)
-    const handleOpenCart = () => {
+    let cartCtx=useContext(cartContext);
+    function countSum(arr){
+        let sum=0;
+        for (let i = 0; i < arr.length; i++) {
+            sum = sum+Number(arr[i].price);
+        }
+        return sum;
+      }
+    const handleOpenCart = async () => {
         props.handleToggleCart();
+            try{
+                let usermailid=cartCtx.email.replace(/[^a-zA-Z0-9 ]/g, '');
+               let responce = await fetch(`https://crudcrud.com/api/2ebf37c4371348fe9e414e2868de43ea/cart${usermailid}`,{
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+              } );
+              let data=await responce.json();
+              console.log(data);
+              cartCtx.setCartItems({items:data,totalItems:data.length,totalAmount:countSum(data)})
+            } catch (e) {
+                console.log(e);
+              console.log("Something went wrong");
+            }
     }
     return (
         <div>
@@ -21,6 +43,9 @@ const Navbar = (props) => {
                             </li>
                             <li className="nav-item">
                                 <NavLink className="nav-link active" aria-current="page" exact to="/store">Store</NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink className="nav-link active" aria-current="page"  to="/products">Products</NavLink>
                             </li>
                             <li className="nav-item">
                                 <NavLink className="nav-link active" aria-current="page" exact to="/about">About</NavLink>

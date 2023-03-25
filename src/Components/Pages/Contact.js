@@ -14,7 +14,7 @@ function Contact() {
             phone:phone.current.value
         }
 
-        const response=await fetch('https://react-1272f-default-rtdb.firebaseio.com/contact.json',{
+        const response=await fetch('https://react-sharpener-e-commerce-default-rtdb.firebaseio.com/contact.json',{
             method:"POST",
             body:JSON.stringify(newContact),
             headers:{
@@ -26,6 +26,7 @@ function Contact() {
         console.log(data)
     }
   return (
+
     <form className='container border my-3 my-form'>
         <h1 className='text-center'>Contact Us</h1>
       <div className='control'>
@@ -41,7 +42,7 @@ function Contact() {
         <input type='tel' id='phone' ref={phone} placeholder='Enter valid phone number'/>
       </div>
       <div className='text-center my-3'>
-      <button type="button" classname="contact-btn" onClick={handleSubmit}>Submit</button>
+      <button type="button" className="contact-btn" onClick={handleSubmit}>Submit</button>
       </div>
     </form>
   );
